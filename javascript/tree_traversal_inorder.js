@@ -8,6 +8,27 @@ class Node {
 
 function treeTraversalInorder(root) {
   // type your code here
+  if (root === null){
+
+    return []
+
+  } else if (root.left === null && root.right === null){
+
+    return [root.value]
+
+  } else if (root.left === null && root.right !== null){
+
+    return [root.value, treeTraversalInorder(root.right)].flat()
+
+  } else if (root.left !== null && root.right === null){
+
+    return [treeTraversalInorder(root.left), root.value].flat()
+
+  } else {
+
+    return [treeTraversalInorder(root.left), root.value, treeTraversalInorder(root.right)].flat()
+
+  }
 }
 
 if (require.main === module) {

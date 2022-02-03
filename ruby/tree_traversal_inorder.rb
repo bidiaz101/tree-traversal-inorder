@@ -10,6 +10,27 @@ end
 
 def tree_traversal_inorder(root)
   # type your code in here
+  if root == nil
+
+    return []
+
+  elsif root.left == nil && root.right == nil
+
+    return [root.value].flatten
+
+  elsif root.left == nil && root.right != nil
+
+    return [root.value, tree_traversal_inorder(root.right)].flatten
+
+  elsif root.left != nil && root.right == nil
+
+    return [tree_traversal_inorder(root.left), root.value].flatten
+
+  else
+
+    return [tree_traversal_inorder(root.left), root.value, tree_traversal_inorder(root.right)].flatten
+
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
